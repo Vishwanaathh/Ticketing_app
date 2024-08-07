@@ -8,6 +8,8 @@ export default function Client() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
+    
+
         const fetchdata = async () => {
             const response = await fetch('http://localhost:3002/Allcomplaints');
             const result = await response.json();
