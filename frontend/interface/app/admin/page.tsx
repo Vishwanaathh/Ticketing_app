@@ -1,5 +1,6 @@
 "use client";
 import {useState,useEffect} from "react";
+import Footer from '../footer';
 export default function Admin(){
     const [data,setData]=useState([]);
     useEffect(()=>{
@@ -18,9 +19,9 @@ export default function Admin(){
     })
   }
     return(<div>
-         <div className='h-28 bg-slate-100 font-light'>
+            <div className=' flex h-28 bg-slate-100 font-light'>
                 <h1 className='text-3xl'>Ticket Portal</h1>
-                <h5>Admin</h5>
+              <ul className='flex ml-96'><li><a href='http://localhost:3001/client'>Client</a></li><li className='ml-10'><a href='http://localhost:3001/admin'>Admin</a></li><li className='ml-10'>How it works</li></ul>
             </div>
             <ul>
                     {data.map((item, index) => (
@@ -33,5 +34,5 @@ export default function Admin(){
                 </ul>
                 <button onClick={deletee} className='bg-slate-200 border border-black'>Delete all complaints</button>
 
-    </div>)
+    <Footer/></div>)
 }

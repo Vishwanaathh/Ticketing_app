@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
-
+import Footer from '../footer';
 export default function Client() {
     const [admin, setAdmin] = useState("");
     const [complaint, setComplaint] = useState("");
     const [date, setDate] = useState("");
     const [data, setData] = useState([]);
+    const [display,setDisplay]=useState(false);
+
 
     useEffect(() => {
     
@@ -28,17 +30,22 @@ export default function Client() {
             },
             body:JSON.stringify(newcomp),
         })
+        window.location.reload();
         
+    }
+    const togglee=()=>{
+        setDisplay(!display);
     }
 
     return (
         <div>
-            <div className='h-28 bg-slate-100 font-light'>
+            <div className=' flex h-28 bg-slate-100 font-light'>
                 <h1 className='text-3xl'>Ticket Portal</h1>
-                <h5>client</h5>
+              <ul className='flex ml-96'><li><a href='http://localhost:3001/client'>Client</a></li><li className='ml-10'><a href='http://localhost:3001/admin'>Admin</a></li><li className='ml-10'>How it works</li></ul>
             </div>
             <div className='flex flex-row ml-40 mt-10'>
             <div>
+                <h4 className='text-2xl'>Enter your complaints here</h4>
                 <form onSubmit={handleSubmit}>
                     <input className='border border-black w-72 text-center'
                         type="text"
@@ -61,9 +68,10 @@ export default function Client() {
                 </form>
             </div>
             <div className='ml-96'>
+                <button onClick={togglee} className='bg-yellow-400 font-mono w-40 rounded-sm border border-black'>List of complaints</button>
                 <ul>
-                    {data.map((item, index) => (
-                        <li key={index} className='border border-black mt-1'>
+                    {display&&data.map((item, index) => (
+                        <li key={index} className='border border-gray mt-5 shadow-lg rounded-md'>
                             <p><strong>Admin:</strong> {item.Admin}</p>
                             <p><strong>Complaint:</strong> {item.Complaint}</p>
                             <p><strong>Date:</strong> {item.Date}</p>
@@ -71,6 +79,7 @@ export default function Client() {
                     ))}
                 </ul>
             </div>
-        </div></div>
+        </div>
+        <Footer/></div>
     );
 }
