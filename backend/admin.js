@@ -21,8 +21,9 @@ app.get('/complaints/:admin',async(req,res)=>{
    res.json(data);
 
 })
-app.delete('/deleteComplaints',async(req,res)=>{
-    const result=await Ticket.deleteMany({});
+app.delete('/deleteComplaints/:admin',async(req,res)=>{
+    const admin=req.params.admin;
+    const result=await Ticket.deleteMany({Admin:admin});
     res.send("deleted");
 })
 

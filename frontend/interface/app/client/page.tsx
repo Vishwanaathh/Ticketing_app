@@ -41,7 +41,7 @@ export default function Client() {
         <div>
             <div className=' flex h-28 bg-slate-100 font-light'>
                 <h1 className='text-3xl'>Ticket Portal</h1>
-              <ul className='flex ml-96'><li><a href='http://localhost:3001/client'>Client</a></li><li className='ml-10'><a href='http://localhost:3001/admin'>Admin</a></li><li className='ml-10'>How it works</li></ul>
+              <ul className='flex ml-96'><li><a href='http://localhost:3001/client'>Client</a></li><li className='ml-10'><a href='http://localhost:3001/admin'>Admin</a></li></ul>
             </div>
             <div className='flex flex-row ml-40 mt-10'>
             <div>
