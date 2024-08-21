@@ -32,7 +32,7 @@ export default function Admin(){
                 <h1 className='text-3xl'>Ticket Portal</h1>
               <ul className='flex ml-96'><li><a href='http://localhost:3001/client'>Client</a></li><li className='ml-10'><a href='http://localhost:3001/admin'>Admin</a></li></ul>
             </div>
-            <input type="text" placeholder="Enter name of admin" className='border border-black' value={admin} onChange={(e)=>setAdmin(e.target.value)}/><br></br>
+            <input type="text" placeholder="Enter name of Domain" className='border border-black' value={admin} onChange={(e)=>setAdmin(e.target.value)}/><br></br>
             <button className='bg-yellow-400 border border-black w-52' onClick={submitted}>Display Complaints</button>
            {display&&<div>
             <ul>

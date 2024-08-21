@@ -49,7 +49,7 @@ export default function Client() {
                 <form onSubmit={handleSubmit}>
                     <input className='border border-black w-72 text-center'
                         type="text"
-                        placeholder="Enter Admin Name"
+                        placeholder="Enter Domain name"
                         onChange={(e) => setAdmin(e.target.value)}
                     /><br />
                     <textarea
