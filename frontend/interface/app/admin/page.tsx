@@ -37,7 +37,7 @@ export default function Admin(){
            {display&&<div>
             <ul>
                     {data.map((item, index) => (
-                        <li key={index} className='border border-gray-300 rounded-sm shadow-lg  mt-5 w-40 ml-96'>
+                        <li key={index} className='border border-gray-300 rounded-sm shadow-lg  mt-5 w-full ml-96'>
                             <p><strong>Admin:</strong> {item.Admin}</p>
                             <p><strong>Complaint:</strong> {item.Complaint}</p>
                             <p><strong>Date:</strong> {item.Date}</p>
