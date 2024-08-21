@@ -9,7 +9,7 @@ export default function Client() {
     const [display,setDisplay]=useState(false);
 
 
-    useEffect(() => {
+    /*useEffect(() => {
     
 
         const fetchdata = async () => {
@@ -18,8 +18,8 @@ export default function Client() {
             setData(result);
         };
         fetchdata();
-    }, []);
-
+    }, []);*/
+    const[key,setKey]=useState("");
     const handleSubmit = async(e) => {
         e.preventDefault();
         const newcomp={Admin:admin,Complaint:complaint,Date:date};
@@ -33,8 +33,29 @@ export default function Client() {
         window.location.reload();
         
     }
-    const togglee=()=>{
-        setDisplay(!display);
+    const togglee=async()=>{
+        try {
+            // First, get the JWT token
+            const loginResponse = await fetch(`http://localhost:3002/login/${key}`, {
+                method: 'POST'
+            });
+            const { token } = await loginResponse.json();
+    
+            // Store the token in localStorage
+            localStorage.setItem('token', token);
+    
+            // Use the token to fetch complaints
+            const complaintsResponse = await fetch(`http://localhost:3002/Allcomplaints`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const result = await complaintsResponse.json();
+            setData(result);
+            setDisplay(true);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
 
     return (
@@ -45,7 +66,7 @@ export default function Client() {
             </div>
             <div className='flex flex-row ml-40 mt-10'>
             <div>
-                <h4 className='text-2xl'>Enter your complaints here</h4>
+                <h4 className='text-2xl'>Enter your complaints</h4>
                 <form onSubmit={handleSubmit}>
                     <input className='border border-black w-72 text-center'
                         type="text"
@@ -68,7 +89,8 @@ export default function Client() {
                 </form>
             </div>
             <div className='ml-96'>
-                <button onClick={togglee} className='bg-yellow-400 font-mono w-40 rounded-sm border border-black'>List of complaints</button>
+                <input type="password" placeholder="Enter domain password" value={key} onChange={(e)=>{setKey(e.target.value)}} className='border border-black w-72 text-center'/>
+                <button onClick={togglee} className='bg-yellow-400 font-mono w-72 rounded-sm border border-black'>List of complaints</button>
                 <ul>
                     {display&&data.map((item, index) => (
                         <li key={index} className='border border-gray mt-5 shadow-lg rounded-md'>
