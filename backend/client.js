@@ -15,7 +15,7 @@ app.post('/raiseTicket',async(req,res)=>{
 })
     
 
-mongoose.connect('mongodb+srv://admin:root@cluster0.mtdfqct.mongodb.net/TICKETS?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect()
 .then(
 app.listen(3003,()=>{
     console.log('Listening');
