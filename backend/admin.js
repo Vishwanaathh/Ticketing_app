@@ -60,7 +60,7 @@ app.delete('/deleteComplaints/:admin',async(req,res)=>{
     res.send("deleted");
 })
 
-mongoose.connect('mongodb+srv://admin:root@cluster0.mtdfqct.mongodb.net/TICKETS?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect()
 .then(
     app.listen(3002,()=>{
         console.log('Listening');
